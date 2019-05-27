@@ -6,11 +6,6 @@ import git
 app = flask.Flask(__name__)
 
 
-@app.route('/')
-def hello_world():
-    return 'Hello from Kek!'
-
-
 @app.route('/', methods=['POST'])
 def processing():
     data = flask.json.loads(flask.request.data)
