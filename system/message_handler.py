@@ -6,7 +6,7 @@ import system.command_system
 
 def load_modules():
     # путь от рабочей директории, ее можно изменить в настройках приложения
-    files = os.listdir("vkbot/commands")
+    files = os.listdir("POEbot/commands")
     modules = filter(lambda x: x.endswith('.py'), files)
     for m in modules:
         importlib.import_module("commands." + m[0:-3])
