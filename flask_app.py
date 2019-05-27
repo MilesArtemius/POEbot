@@ -6,25 +6,25 @@ import git
 app = flask.Flask(__name__)
 
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['POST', 'GET'])
 def processing():
-    data = flask.json.loads(flask.request.data)
-    if 'type' not in data.keys():
-        return 'not vk'
-    if data['type'] == 'confirmation':
-        return vk_io.settings.confirmation_token
-    elif data['type'] == 'message_new':
-        system.message_handler.create_answer(data['object'], vk_io.settings.token)
-        return 'ok'
+    if flask.request.method == 'POST':
+        data = flask.json.loads(flask.request.data)
+        if 'type' not in data.keys():
+            return 'not vk'
+        if data['type'] == 'confirmation':
+            return vk_io.settings.confirmation_token
+        elif data['type'] == 'message_new':
+            system.message_handler.create_answer(data['object'], vk_io.settings.token)
+            return 'ok'
+    else:
+        return 'Bot\'s heart beating'
 
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    if flask.request.method == 'POST':
-        repo = git.Repo('/home/milty/POEbot')
-        origin = repo.remotes.origin
-        repo.create_head('master', origin.refs.master).set_tracking_branch(origin.refs.master).checkout()
-        origin.pull()
-        return '', 200
-    else:
-        return 'That\'s a webhook', 400
+    repo = git.Repo('/home/milty/POEbot')
+    origin = repo.remotes.origin
+    repo.create_head('master', origin.refs.master).set_tracking_branch(origin.refs.master).checkout()
+    origin.pull()
+    return '', 200
