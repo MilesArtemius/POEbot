@@ -7,7 +7,7 @@ import git
 app = flask.Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['POST'])
 def processing():
     if flask.request.method == 'POST':
         data = flask.json.loads(flask.request.data)
