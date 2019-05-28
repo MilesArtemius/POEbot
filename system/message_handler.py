@@ -24,6 +24,6 @@ def get_answer(body):
 
 def create_answer(data, token):
     load_modules()
-    user_id = data['user_id']
+    user_id = data['peer_id']
     message, attachment = get_answer(data['body'].lower())
     vk_io.vk_api.send_message(user_id, token, message, attachment)
