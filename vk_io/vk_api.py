@@ -1,8 +1,9 @@
 import vk
 import random
+import vk_io.settings
 
-session = vk.Session()
-api = vk.API(session, v=5.0)
+session = vk.Session(vk_io.settings.token)
+api = vk.API(session, v=5.95)
 
 
 def send_message(user_id, token, message, attachment=""):
