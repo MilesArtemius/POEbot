@@ -16,6 +16,7 @@ def processing():
     elif data['type'] == 'message_new':
         system.message_handler.create_answer(data['object'], vk_io.settings.token)
         return 'ok'
+    return '', 200
 
 
 @app.route('/webhook', methods=['POST'])
