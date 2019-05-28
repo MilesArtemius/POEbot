@@ -8,17 +8,14 @@ app = flask.Flask(__name__)
 
 @app.route('/', methods=['POST'])
 def processing():
-    if flask.request.method == 'POST':
-        data = flask.json.loads(flask.request.data)
-        if 'type' not in data.keys():
-            return 'not vk'
-        if data['type'] == 'confirmation':
-            return vk_io.settings.confirmation_token
-        elif data['type'] == 'message_new':
-            system.message_handler.create_answer(data['object'], vk_io.settings.token)
-            return 'ok'
-    else:
-        return 'Bot\'s heart beating'
+    data = flask.json.loads(flask.request.data)
+    if 'type' not in data.keys():
+        return 'not vk'
+    if data['type'] == 'confirmation':
+        return vk_io.settings.confirmation_token
+    elif data['type'] == 'message_new':
+        system.message_handler.create_answer(data['object'], vk_io.settings.token)
+        return 'ok'
 
 
 @app.route('/webhook', methods=['POST'])
