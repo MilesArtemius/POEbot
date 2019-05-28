@@ -1,7 +1,6 @@
 import flask
 import vk_io.settings
 import system.message_handler
-import vk
 import git
 
 app = flask.Flask(__name__)
