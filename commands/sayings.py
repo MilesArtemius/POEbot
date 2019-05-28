@@ -23,7 +23,7 @@ def sayings():
         #          'нп=прош,ед,изъяв,сред,сов',
         #          '=V,пе=инф,несов')
 
-        with open('sayings.txt', encoding='utf-8') as f:
+        with open('./commands/sayings.txt', encoding='utf-8') as f:
             originals = f.read()
         codes = {
             'imperative': '{.+пов.+}',
@@ -78,9 +78,9 @@ def sayings():
         output = '{code}\n{saying}.'.format(code=code, saying=saying)
         return output
 
-    with open('first_halves.txt', encoding='utf-8') as f:
+    with open('./commands/first_halves.txt', encoding='utf-8') as f:
         first_halves = f.read().split('\n')
-    with open('second_halves.txt', encoding='utf-8') as f:
+    with open('./commands/second_halves.txt', encoding='utf-8') as f:
         second_halves = f.read().split('\n')
     final_output = generator(first_halves, second_halves)
     return final_output, ''
