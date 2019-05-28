@@ -1,6 +1,7 @@
 import flask
 import vk_io.settings
 import system.message_handler
+import vk
 import git
 
 app = flask.Flask(__name__)
@@ -15,7 +16,11 @@ def processing():
         if data['type'] == 'confirmation':
             return vk_io.settings.confirmation_token
         elif data['type'] == 'message_new':
-            system.message_handler.create_answer(data['object'], vk_io.settings.token)
+            session = vk.Session()
+            api = vk.API(session, v=5.0)
+            user_id = data['object']['user_id']
+            api.messages.send(access_token=vk_io.settings.token, user_id=str(user_id), message='Привет, я новый бот!')
+            #system.message_handler.create_answer(data['object'], vk_io.settings.token)
             return 'ok'
     else:
         return 'Bot\'s heart beating'
