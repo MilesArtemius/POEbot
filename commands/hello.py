@@ -8,6 +8,6 @@ def hello():
 
 hello_command = system.command_system.Command()
 
-hello_command.keys = ['привет', 'hello', 'дратути', 'здравствуй', 'здравствуйте']
+hello_command.key = 'привет'
 hello_command.description = 'Поприветствую тебя'
 hello_command.process = hello

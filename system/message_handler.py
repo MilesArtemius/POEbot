@@ -17,7 +17,7 @@ def get_answer(body):
     message = "Прости, не понимаю тебя. Напиши 'помощь', чтобы узнать мои команды"
     attachment = ''
     for c in system.command_system.command_list:
-        if body in c.keys:
+        if body == c.key:
             message, attachment = c.process()
     return message, attachment
 
