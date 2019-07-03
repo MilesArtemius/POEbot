@@ -25,6 +25,6 @@ def info(text):
             if inspect.isclass(obj) and issubclass(obj, system.command.Command):
                 inst = obj()
                 break
-        message += m[0:-3] + ' - ' + inst.description + '\n'
+        message += '/' + m[0:-3] + ' - ' + inst.description + '\n'
 
     return message, ''
