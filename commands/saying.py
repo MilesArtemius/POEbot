@@ -1,3 +1,4 @@
+import os
 import re
 import random
 # TODO: Ai suggest madding some \n's in code 2 make it more READABLE!
@@ -30,7 +31,7 @@ def generator(first_halves, second_halves):
     #          'нп=прош,ед,изъяв,сред,сов',
     #          '=V,пе=инф,несов')
 
-    with open('/home/milty/POEbot/resources_sayings/sayings.txt', encoding='utf-8') as f:
+    with open(os.path.join(os.getcwd(), 'resources_sayings', 'sayings.txt'), encoding='utf-8') as f:
         originals = f.read()
     codes = {
         'imperative': '{.+пов.+}',
@@ -88,9 +89,9 @@ def generator(first_halves, second_halves):
 
 
 def sayings(text):
-    with open('/home/milty/POEbot/resources_sayings/first_halves.txt', encoding='utf-8') as f:
+    with open(os.path.join(os.getcwd(), 'resources_sayings', 'first_halves.txt'), encoding='utf-8') as f:
         first_halves = f.read().split('\n')
-    with open('/home/milty/POEbot/resources_sayings/second_halves.txt', encoding='utf-8') as f:
+    with open(os.path.join(os.getcwd(), 'resources_sayings', 'second_halves.txt'), encoding='utf-8') as f:
         second_halves = f.read().split('\n')
     final_output = generator(first_halves, second_halves)
     return final_output, ''
