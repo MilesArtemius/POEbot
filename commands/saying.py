@@ -1,7 +1,16 @@
-import system.command_system
 import re
 import random
 # TODO: Ai suggest madding some \n's in code 2 make it more READABLE!
+import system.command
+
+
+class SayingCommand(system.command.Command):
+    def __init__(self):
+        super().__init__()
+        self.description = 'Пришлю тебе твою любимую пословицу)'
+
+    def process(self, text):
+        return sayings(text)
 
 
 def clean_output(text):
@@ -78,17 +87,10 @@ def generator(first_halves, second_halves):
     return output
 
 
-def sayings():
+def sayings(text):
     with open('/home/milty/POEbot/resources_sayings/first_halves.txt', encoding='utf-8') as f:
         first_halves = f.read().split('\n')
     with open('/home/milty/POEbot/resources_sayings/second_halves.txt', encoding='utf-8') as f:
         second_halves = f.read().split('\n')
     final_output = generator(first_halves, second_halves)
     return final_output, ''
-
-
-sayings_command = system.command_system.Command()
-
-sayings_command.key = 'пословица'
-sayings_command.description = 'Пришлю тебе твою любимую пословицу)'
-sayings_command.process = sayings

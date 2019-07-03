@@ -1,13 +1,19 @@
-import system.command_system
+import system.command
 
 
-def hello():
+class HelloCommand(system.command.Command):
+    def __init__(self):
+        super().__init__()
+        self.description = 'Поприветствую тебя'
+
+    def process(self, text):
+        return hello(text)
+
+
+def hello(text):
     message = 'Привет, друг!\nЯ новый чат-бот.'
     return message, ''
 
 
-hello_command = system.command_system.Command()
-
-hello_command.key = 'привет'
-hello_command.description = 'Поприветствую тебя'
-hello_command.process = hello
+description = 'Поприветствую тебя'
+process = hello

@@ -1,14 +1,14 @@
-import system.command_system
-import vk_io.vk_api
+import system.command
 
 
-def cat():
-    # null
+class CatCommand(system.command.Command):
+    def __init__(self):
+        super().__init__()
+        self.description = 'Fuck you!'
+
+    def process(self, text):
+        return cat(text)
+
+
+def cat(text):
     return 'fuck da life', ''
-
-
-cat_command = system.command_system.Command()
-
-cat_command.key = 'котик'
-cat_command.description = 'Fuck you!'
-cat_command.process = cat

@@ -1,15 +1,30 @@
-import system.command_system
+import importlib
+import inspect
+import os
+import system.command
 
 
-def info():
+class InfoCommand(system.command.Command):
+    def __init__(self):
+        super().__init__()
+        self.description = 'Покажу список команд'
+
+    def process(self, text):
+        return info(text)
+
+
+def info(text):
     message = ''
-    for c in system.command_system.command_list:
-        message += c.key + ' - ' + c.description + '\n'
+    files = os.listdir("commands")
+    modules = filter(lambda x: x.endswith('.py'), files)
+    for m in modules:
+        mod = importlib.import_module("commands." + m[0:-3])
+        inst = system.command.Command()
+
+        for name, obj in inspect.getmembers(mod):
+            if inspect.isclass(obj) and issubclass(obj, system.command.Command):
+                inst = obj()
+                break
+        message += m[0:-3] + ' - ' + inst.description + '\n'
+
     return message, ''
-
-
-info_command = system.command_system.Command()
-
-info_command.key = 'помощь'
-info_command.description = 'Покажу список команд'
-info_command.process = info
