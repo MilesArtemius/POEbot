@@ -28,4 +28,4 @@ def set_webhook(secret):
     )
 
     bot = telepot.Bot('710918583:AAH6GxWYjn7TRDAcqQ60OBv40T32iUZUwjY')
-    bot.setWebhook("https://YOUR_PYTHONANYWHERE_USERNAME.pythonanywhere.com/{}".format(secret), max_connections=1)
+    bot.setWebhook("https://milty.pythonanywhere.com/{}".format(secret), max_connections=1)
