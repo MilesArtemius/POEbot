@@ -17,14 +17,14 @@ def processing():
     # revise & remove vk dependency
     system.main_handler.load_api()
     if 'message' in data.keys():
-        with open(os.path.join(os.getcwd(), 'tlg_msg.txt'), encoding='utf-8') as f:
+        with open(os.path.join(os.getcwd(), 'tlg_msg.txt'), "w+", encoding='utf-8') as f:
             f.write(data)
     if 'type' not in data.keys():
         return 'not vk'
     if data['type'] == 'confirmation':
         return vk_io.settings.confirmation_token
     elif data['type'] == 'message_new':
-        with open(os.path.join(os.getcwd(), 'vk_msg.txt'), encoding='utf-8') as f:
+        with open(os.path.join(os.getcwd(), 'vk_msg.txt'), "w+", encoding='utf-8') as f:
             f.write(data)
         system.main_handler.build(data['object'])
         return 'ok'
