@@ -28,7 +28,7 @@ def processing():
         f = open(os.path.join(os.getcwd(), 'vk_msg.txt'), "w+")
         f.write(str(data))
         f.flush()
-        system.main_handler.build(data['object'])
+        system.main_handler.build(data)
         return 'ok'
     return '', 200
 
