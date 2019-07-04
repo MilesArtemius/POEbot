@@ -33,7 +33,7 @@ def processing():
     return '', 200
 
 
-@app.route('/webhook', methods=['POST'])
+@app.route('/{}_webhook'.format(secret), methods=['POST'])
 def webhook():
     repo = git.Repo('/home/milty/POEbot')
     origin = repo.remotes.origin
