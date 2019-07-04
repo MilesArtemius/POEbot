@@ -18,14 +18,14 @@ def processing():
     system.main_handler.load_api()
     if 'message' in data.keys():
         f = open(os.path.join(os.getcwd(), 'tlg_msg.txt'), "w+")
-        f.write(data)
+        f.write(str(data))
     if 'type' not in data.keys():
         return 'not vk'
     if data['type'] == 'confirmation':
         return vk_io.settings.confirmation_token
     elif data['type'] == 'message_new':
         f = open(os.path.join(os.getcwd(), 'vk_msg.txt'), "w+")
-        f.write(data)
+        f.write(str(data))
         system.main_handler.build(data['object'])
         return 'ok'
     return '', 200
