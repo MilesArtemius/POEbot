@@ -19,6 +19,7 @@ def processing():
     if 'message' in data.keys():
         f = open(os.path.join(os.getcwd(), 'tlg_msg.txt'), "w+")
         f.write(str(data))
+        f.flush()
     if 'type' not in data.keys():
         return 'not vk'
     if data['type'] == 'confirmation':
@@ -26,6 +27,7 @@ def processing():
     elif data['type'] == 'message_new':
         f = open(os.path.join(os.getcwd(), 'vk_msg.txt'), "w+")
         f.write(str(data))
+        f.flush()
         system.main_handler.build(data['object'])
         return 'ok'
     return '', 200
