@@ -3,4 +3,4 @@ class Command:
         self.description = ''
 
     def process(self, text):
-        pass
+        return ""

@@ -3,10 +3,10 @@ class Api:
         pass
 
     def get_user_id(self, message):
-        pass
+        return ""
 
     def send_message(self, message, user_id, attachment, token):
         pass
 
     def get_message_text(self, message):
-        pass
+        return ""
