@@ -30,11 +30,12 @@ def get_answer(text):
         except ModuleNotFoundError:
             message = "There is no such command!"
     else:
-        message = "sorry, no chatting yet :/"
+        message = ""
         # chat with user
     return message, attachment
 
 
 def build(data):
     message, attachment = get_answer(api.get_message_text(data).split())
-    api.send_message(message, api.get_user_id(data), attachment)
+    if message != "":
+        api.send_message(message, api.get_user_id(data), attachment)
