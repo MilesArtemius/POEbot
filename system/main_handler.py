@@ -1,17 +1,17 @@
 import importlib
 import inspect
 
-import console_io.console_int
+import console_io.console_api
 import system.command
-import vk_io.vk_int
+import vk_io.vk_api
 
-api = console_io.console_int.ConsoleApi()
+api = console_io.console_api.ConsoleApi()
 
 
 def load_api():
     global api
     # loading default vk api
-    api = vk_io.vk_int.VkApi()
+    api = vk_io.vk_api.VkApi()
 
 
 def get_answer(text):

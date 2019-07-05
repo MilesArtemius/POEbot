@@ -4,11 +4,11 @@ import flask
 import vk_io.settings
 import system.main_handler
 import git
-import telegram_io.telegram_int
+import telegram_io.telegram_api
 
 secret = ""
 app = flask.Flask(__name__)
-telegram_io.telegram_int.set_webhook(secret)
+telegram_io.telegram_api.set_webhook(secret)
 
 
 @app.route('/{}'.format(secret), methods=['POST'])
