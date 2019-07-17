@@ -15,7 +15,6 @@ class InfoCommand(system.command.Command):
 
 def info(text):
     message = 'lol'
-    '''
     files = os.listdir(os.path.join(os.getcwd(), "commands"))
     modules = filter(lambda x: not x == '__init__.py' and not x == 'start.py' and x.endswith('.py'), files)
     for m in modules:
@@ -27,5 +26,5 @@ def info(text):
                 inst = obj()
                 break
         message += '/' + m[0:-3] + ' - ' + inst.description + '\n'
-    '''
+
     return message, ''
