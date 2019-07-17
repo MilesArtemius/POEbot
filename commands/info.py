@@ -16,7 +16,7 @@ class InfoCommand(system.command.Command):
 def info(text):
     message = ''
     files = os.listdir(os.path.join(os.getcwd(), "commands"))
-    modules = filter(lambda x: not x.startswith('__') and x.endswith('.py'), files)
+    modules = filter(lambda x: not x.startswith('__') and x is not 'start.py' and x.endswith('.py'), files)
     for m in modules:
         mod = importlib.import_module("commands." + m[0:-3])
         inst = system.command.Command()
