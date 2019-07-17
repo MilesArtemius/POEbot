@@ -12,7 +12,7 @@ class TelegramApi(system.api.Api):
     def get_user_id(self, message):
         return message['message']['from']['id']
 
-    def send_message(self, message, user_id, attachment, token):
+    def send_message(self, message, user_id, attachment):
         self.bot.sendMessage(self.get_user_id(message), 'Hey!').wait()
 
     def get_message_text(self, message):

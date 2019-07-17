@@ -5,7 +5,7 @@ class Api:
     def get_user_id(self, message):
         return ""
 
-    def send_message(self, message, user_id, attachment, token):
+    def send_message(self, message, user_id, attachment):
         pass
 
     def get_message_text(self, message):

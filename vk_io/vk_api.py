@@ -14,8 +14,8 @@ class VkApi(system.api.Api):
     def get_user_id(self, message):
         return message['object']['peer_id']
 
-    def send_message(self, message, user_id, attachment='', token=vk_io.settings.token):
-        self.api.messages.send(access_token=token, peer_id=str(user_id), random_id=random.randint(0, sys.maxsize), message=message, attachment=attachment)
+    def send_message(self, message, user_id, attachment=''):
+        self.api.messages.send(access_token=vk_io.settings.token, peer_id=str(user_id), random_id=random.randint(0, sys.maxsize), message=message, attachment=attachment)
 
     def get_message_text(self, message):
         return message['object']['text']
