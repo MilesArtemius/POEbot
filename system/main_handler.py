@@ -1,5 +1,7 @@
 import importlib
 import inspect
+import os
+
 import console_io.console_api
 import system.command
 import telegram_io.telegram_api
@@ -9,9 +11,12 @@ api = console_io.console_api.ConsoleApi()
 
 
 # 0 is for console io, 1 - for vk, 2 - for telegram
-def load_api(marker):
+def load_api(marker, string):
     global api
     if marker == 1:
+        f = open(os.path.join(os.getcwd(), 'vk_messages.txt'), encoding='utf-8')
+        f.write(string['object']['text'])
+        f.flush()
         api = vk_io.vk_api.VkApi()
     elif marker == 2:
         api = telegram_io.telegram_api.TelegramApi()

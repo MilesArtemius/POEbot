@@ -12,7 +12,7 @@ telegram_io.telegram_api.set_webhook(secret)
 @app.route('/{}'.format(secret), methods=['POST'])
 def processing():
     data = flask.json.loads(flask.request.data)
-    system.main_handler.load_api(check_source(data))
+    system.main_handler.load_api(check_source(data), data)
     if 'type' in data.keys() and data['type'] == 'confirmation':
         return vk_io.settings.confirmation_token
     else:
