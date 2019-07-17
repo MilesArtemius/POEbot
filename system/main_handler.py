@@ -17,7 +17,7 @@ def load_api(marker, string):
         f = open(os.path.join(os.getcwd(), 'vk_messages.txt'), "a")
         f.write(string['object']['text'])
         f.write('\n')
-        f.write('--- ' + string['object']['peer_id'])
+        f.write('--- ' + str(string['object']['peer_id']))
         f.write('\n\n\n')
         f.flush()
         api = vk_io.vk_api.VkApi()
