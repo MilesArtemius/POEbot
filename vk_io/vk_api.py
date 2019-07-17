@@ -9,10 +9,10 @@ class VkApi(system.api.Api):
     def __init__(self):
         super().__init__()
         self.session = vk.Session(vk_io.settings.token)
-        self.api = vk.API(self.session)
+        self.api = vk.API(self.session, v=5.95)
 
     def get_user_id(self, message):
-        peer_id = message['object']['from_id']
+        peer_id = message['object']['peer_id']
         return peer_id
         '''if peer_id < 2000000000:
             return peer_id
