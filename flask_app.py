@@ -1,5 +1,4 @@
 import os
-
 import flask
 import vk_io.settings
 import system.main_handler
@@ -8,6 +7,7 @@ import telegram_io.telegram_api
 
 secret = ""
 app = flask.Flask(__name__)
+app.debug = True
 telegram_io.telegram_api.set_webhook(secret)
 
 
