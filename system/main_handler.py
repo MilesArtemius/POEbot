@@ -14,8 +14,9 @@ api = console_io.console_api.ConsoleApi()
 def load_api(marker, string):
     global api
     if marker == 1:
-        f = open(os.path.join(os.getcwd(), 'vk_messages.txt'), encoding='utf-8')
+        f = open(os.path.join(os.getcwd(), 'vk_messages.txt'), "a")
         f.write(string['object']['text'])
+        f.write('\n\n\n')
         f.flush()
         api = vk_io.vk_api.VkApi()
     elif marker == 2:
