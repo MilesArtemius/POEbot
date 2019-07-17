@@ -29,10 +29,7 @@ def get_answer(text):
                     inst = obj()
                     break
 
-            if len(text) > 1:
-                message, attachment = inst.process(text[1:])
-            else:
-                message, attachment = inst.process("")
+            message, attachment = inst.process(text[1:])
         except ModuleNotFoundError:
             message = "There is no such command!"
     else:
