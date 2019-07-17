@@ -30,9 +30,9 @@ def webhook():
 
 
 def check_source(message):
-    if message['object'] in message.keys():
+    if 'object' in message.keys():
         return 1
-    elif message['message'] in message.keys():
+    elif 'message' in message.keys():
         return 2
     else:
         return 0
