@@ -30,7 +30,7 @@ def get_answer(text):
         except ModuleNotFoundError:
             message = "There is no such command!"
     else:
-        message = "lol"
+        message = ""
         # chat with user
     return message, attachment
 
