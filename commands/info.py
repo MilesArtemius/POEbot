@@ -14,7 +14,7 @@ class InfoCommand(system.command.Command):
 
 
 def info(text):
-    message = 'check\n'
+    message = ''
     files = os.listdir(os.path.join(os.getcwd(), "commands"))
     modules = filter(lambda x: not x == '__init__.py' and not x == 'start.py' and x.endswith('.py'), files)
     for m in modules:
