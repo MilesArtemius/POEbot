@@ -10,3 +10,6 @@ class Api:
 
     def get_message_text(self, message):
         return ""
+
+    def answerable(self, message):
+        return True

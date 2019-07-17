@@ -19,3 +19,6 @@ class VkApi(system.api.Api):
 
     def get_message_text(self, message):
         return message['object']['text']
+
+    def answerable(self, message):
+        return message['object']['from_id'] > 0

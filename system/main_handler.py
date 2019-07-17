@@ -47,6 +47,7 @@ def get_answer(text):
 
 
 def build(data):
-    message, attachment = get_answer(api.get_message_text(data).split())
-    if message != "":
-        api.send_message(message, api.get_user_id(data), attachment)
+    if api.answerable(data):
+        message, attachment = get_answer(api.get_message_text(data).split())
+        if message != "":
+            api.send_message(message, api.get_user_id(data), attachment)
