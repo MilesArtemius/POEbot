@@ -1,4 +1,3 @@
-import os
 import flask
 import vk_io.settings
 import system.main_handler
@@ -7,30 +6,18 @@ import telegram_io.telegram_api
 
 secret = ""
 app = flask.Flask(__name__)
-app.debug = True
 telegram_io.telegram_api.set_webhook(secret)
 
 
 @app.route('/{}'.format(secret), methods=['POST'])
 def processing():
     data = flask.json.loads(flask.request.data)
-    # revise & remove vk dependency
-    system.main_handler.load_api()
-    if 'message' in data.keys():
-        f = open(os.path.join(os.getcwd(), 'tlg_msg.txt'), "w+")
-        f.write(str(data))
-        f.flush()
-    if 'type' not in data.keys():
-        return 'not vk'
+    system.main_handler.load_api(check_source(data))
     if data['type'] == 'confirmation':
-        return vk_io.settings.confirmation_token
-    elif data['type'] == 'message_new':
-        f = open(os.path.join(os.getcwd(), 'vk_msg.txt'), "w+")
-        f.write(str(data))
-        f.flush()
+        return vk_io.settings.confirmation_token, 200
+    else:
         system.main_handler.build(data)
-        return 'ok'
-    return '', 200
+        return 'ok', 200
 
 
 @app.route('/{}_webhook'.format(secret), methods=['POST'])
@@ -40,3 +27,12 @@ def webhook():
     repo.create_head('master', origin.refs.master).set_tracking_branch(origin.refs.master).checkout()
     origin.pull()
     return '', 200
+
+
+def check_source(message):
+    if message['object'] in message.keys():
+        return 1
+    elif message['message'] in message.keys():
+        return 2
+    else:
+        return 0

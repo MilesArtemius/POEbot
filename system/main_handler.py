@@ -3,15 +3,19 @@ import inspect
 
 import console_io.console_api
 import system.command
+import telegram_io.telegram_api
 import vk_io.vk_api
 
 api = console_io.console_api.ConsoleApi()
 
 
-def load_api():
+# 0 is for console io, 1 - for vk, 2 - for telegram
+def load_api(marker):
     global api
-    # loading default vk api
-    api = vk_io.vk_api.VkApi()
+    if marker == 1:
+        api = vk_io.vk_api.VkApi()
+    elif marker == 2:
+        api = telegram_io.telegram_api.TelegramApi()
 
 
 def get_answer(text):

@@ -12,12 +12,7 @@ class VkApi(system.api.Api):
         self.api = vk.API(self.session, v=5.95)
 
     def get_user_id(self, message):
-        peer_id = message['object']['peer_id']
-        return peer_id
-        '''if peer_id < 2000000000:
-            return peer_id
-        else:
-            return peer_id - 2000000000'''
+        return message['object']['peer_id']
 
     def send_message(self, message, user_id, attachment='', token=vk_io.settings.token):
         self.api.messages.send(access_token=token, peer_id=str(user_id), random_id=random.randint(0, sys.maxsize), message=message, attachment=attachment)
