@@ -13,7 +13,7 @@ class TelegramApi(system.api.Api):
         return message['message']['from']['id']
 
     def send_message(self, message, user_id, attachment):
-        self.bot.sendMessage(user_id, message).wait()
+        self.bot.sendMessage(user_id, message)
 
     def get_message_text(self, message):
         return message['message']['text']
