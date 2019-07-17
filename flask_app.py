@@ -14,10 +14,10 @@ def processing():
     data = flask.json.loads(flask.request.data)
     system.main_handler.load_api(check_source(data))
     if data['type'] == 'confirmation':
-        return vk_io.settings.confirmation_token, 200
+        return vk_io.settings.confirmation_token
     else:
         system.main_handler.build(data)
-        return 'ok', 200
+        return 'ok'
 
 
 @app.route('/{}_webhook'.format(secret), methods=['POST'])
