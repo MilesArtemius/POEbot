@@ -6,7 +6,7 @@ import telegram_io.telegram_api
 
 secret = ""
 app = flask.Flask(__name__)
-#telegram_io.telegram_api.set_webhook(secret)
+telegram_io.telegram_api.set_webhook(secret)
 
 
 @app.route('/{}'.format(secret), methods=['POST'])
