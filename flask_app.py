@@ -8,6 +8,7 @@ import telegram_io.telegram_api
 
 secret = ""
 app = flask.Flask(__name__)
+app.debug = True
 telegram_io.telegram_api.set_webhook(secret)
 
 
