@@ -10,10 +10,10 @@ class TelegramApi(system.api.Api):
         self.bot = telepot.Bot(telegram_io.settings.token)
 
     def get_user_id(self, message):
-        return message['message']
+        return message['message']['from']['id']
 
     def send_message(self, message, user_id, attachment):
-        self.bot.sendMessage(125631977, self.get_user_id(message)).wait()
+        self.bot.sendMessage(user_id, message).wait()
 
     def get_message_text(self, message):
         return message['message']['text']
