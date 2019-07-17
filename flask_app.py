@@ -1,5 +1,4 @@
 import os
-
 import flask
 import vk_io.settings
 import system.main_handler
