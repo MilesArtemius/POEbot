@@ -14,4 +14,4 @@ groups = "groupby=attr%3D%22%22.mode%3Dflat.groups-on-page%3D10.docs-in-group%3D
 def mk_request(query):
     q = address + user + key + query_start + "+".join(query.split()) + query_fin + language + sort + filtration + groups
     response = requests.get(q)
-    return str(response)
+    return response.text

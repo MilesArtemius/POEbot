@@ -8,10 +8,10 @@ class StartCommand(system.command.Command):
         self.description = 'bochok potik :/'
 
     def process(self, text):
-        return start(text)
+        return search(text)
 
 
-def start(text):
+def search(text):
     if len(text) > 0:
         query = text[0]
     else:
