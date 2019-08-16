@@ -1,0 +1,5 @@
+0 - funny
+1 - annoying
+2 - scary
+3 - post-ironical
+4 - satisfying
