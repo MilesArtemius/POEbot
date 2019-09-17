@@ -17,11 +17,6 @@ def search(text):
     else:
         query = 'pneis'
 
-    address = "https://yandex.ru/search/?"
-    region = "lr=2&"
-    query_start = "text="
-    q = address + region + query_start + "%20".join(query.split())
-
-    html_request = ai_engine.default_answer_seeker.mk_request(q)  # это html запроса в яндексе. используй его с умом. дляя получения другого html по любой другой ссылке - используй тот же метод.
+    html_request = ai_engine.default_answer_seeker.mk_request_in_yandex(query)  # это html запроса в яндексе. используй его с умом. дляя получения другого html по любой другой ссылке - используй метод mk_request.
 
     return str(), ''
